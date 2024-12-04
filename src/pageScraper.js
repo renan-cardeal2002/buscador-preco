@@ -1,5 +1,7 @@
+const {TOKEN_API, URL_API, URL_RAIA} = require("./common/constants");
+
 const scraperObject = {
-    url: 'https://www.drogaraia.com.br/medicamentos.html',
+    url: URL_RAIA,
     async scraper(browser) {
         const page = await browser.newPage();
         await page.goto(this.url);
@@ -45,10 +47,10 @@ const scraperObject = {
                 const axios = require('axios');
                 const config = {
                     method: 'post',
-                    url: 'http://192.168.25.60:3333/util/inserirBuscaPreco',
+                    url: `${URL_API}/util/inserirBuscaPreco`,
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjoiMDIxOTAxOTM5ODIiLCJzZW5oYSI6IlJPTkFMRE8iLCJpYXQiOjE2NzA0MjEyOTAsImV4cCI6MTY3MDQ1NzI5MH0.HF5TAplVURZsvjsMfq86BsyKTJSlAa0EPv3OGwjmQFs",
+                        "Authorization": TOKEN_API,
                     },
                     data: JSON.stringify(currentPageData)
                 };
